@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_app/router/router.dart';
@@ -8,36 +10,28 @@ import 'package:flutter_app/pages/HomePage.dart';
 import 'package:flutter_app/pages/CoursePage.dart';
 import 'package:flutter_app/pages/MarketPage.dart';
 import 'package:flutter_app/pages/MyPage.dart';
-//1. 引入路由跳转的页面
-import 'package:flutter_app/pages/DetailPage.dart';
-import 'package:flutter_app/pages/login/Login.dart';
 
-void main() => runApp(MyApp());
-
+void main() => runApp(const MyApp());
 class MyApp extends StatelessWidget{
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   static const String _title = "Flutter Code Sample";
 
   @override
   Widget build(BuildContext context){
     return MaterialApp(
-      home: MyStatefulWidget(),
+      home: const MyStatefulWidget(),
       debugShowCheckedModeBanner: true, // 隐藏debug
       // 路由 (路由表匹配不到就走路由守卫)
       initialRoute: "/login",
-      // routes: {
-      //   '/login': (context) => LoginPage(),
-      //   '/DetailPage': (context) => DetailPage(),  // 2. 配置跳转页面
-      // },
-      routes: myRouter(context),
+      routes: myRouter(context) // 2. 配置跳转页面
     );
   }
 }
 
 // 第一个大框架的外部创建Widget
 class MyStatefulWidget extends StatefulWidget{
-  MyStatefulWidget() : super();
+  const MyStatefulWidget() : super();
 
   @override
   State<StatefulWidget> createState() => _MyStatefulWidgetState();
@@ -47,14 +41,14 @@ class MyStatefulWidget extends StatefulWidget{
 class _MyStatefulWidgetState extends State<MyStatefulWidget>{
   int _selectedIndex = 0;
 
-  static List<Widget> _widget = <Widget>[
-    new HomePage(),//首页的内容
-    new CoursePage(), // 课堂的内容
-    Text(
+  static final List<Widget> _widget = <Widget>[
+    HomePage(),//首页的内容
+    const CoursePage(), // 课堂的内容
+    const Text(
       'index4 :首页',
     ),
-    new MarketPage(), // 市集的内容
-    new MyPage(), // 我的的内容
+    MarketPage(), // 市集的内容
+    MyPage(), // 我的的内容
   ];
 
   @override

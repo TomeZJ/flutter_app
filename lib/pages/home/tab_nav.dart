@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_final_fields, unnecessary_this
 
 import 'package:flutter/material.dart';
 // tab 页面
@@ -6,7 +6,7 @@ import 'package:flutter_app/pages/HomePage.dart';
 import 'package:flutter_app/pages/CoursePage.dart';
 import 'package:flutter_app/pages/MarketPage.dart';
 import 'package:flutter_app/pages/MyPage.dart';
-
+import 'package:flutter_app/pages/AddPage.dart';
 class AppNav extends StatefulWidget {
   const AppNav({Key? key}) : super(key: key);
 
@@ -15,31 +15,27 @@ class AppNav extends StatefulWidget {
 }
 
 class AppNavState extends State<AppNav> {
-  PageController _pageController = PageController(initialPage: 0);
+
   int _selectedIndex = 0;
 
+  PageController _pageController = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return WillPopScope(
+      onWillPop: () async {
+        return Future.value(false);
+      },
+      child: Scaffold(
         body: PageView(
           physics: NeverScrollableScrollPhysics(),
           controller: _pageController,
           children: <Widget>[
-            HomePage(),//首页的内容
+            HomePage(),// 首页的内容
             CoursePage(), // 课堂的内容
-            Text(
-              'index4 :首页',
-            ),
+            AddPage(), // 新增的内容
             MarketPage(), // 市集的内容
             MyPage(), // 我的的内容
           ],
-          // onPageChanged: (index) {
-          //   setState(() {
-          //     this._selectedIndex = index;
-          //     _setAppBarTitle();
-          //   });
-          // },
         ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
@@ -70,16 +66,17 @@ class AppNavState extends State<AppNav> {
           unselectedItemColor: Colors.black,
           selectedFontSize: 12.0,
           onTap: (index) {
-            // if (index == 3 || index == 2) {
-            // _pageController.jumpToPage(index);
-            // _currentIndex = index;
-            if (index != 2) {
-              _pageController.jumpToPage(index);
-              _selectedIndex = index;
-            } else {
-              // BotToast.showText(text: "暂无新建项", align: Alignment.center);
-              // showMainBottomSheet(context);
-            }
+            print(index);
+            _pageController.jumpToPage(index);
+            setState(() {
+              this._selectedIndex = index;
+            });
+            // if (index != 2) {
+            //   _pageController.jumpToPage(index);
+            //   _selectedIndex = index;
+            // } else {
+            //   // BotToast.showText(text: "暂无新建项", align: Alignment.center);
+            //   // showMainBottomSheet(context);
             // }
           },
         ),

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/components/SliverComp.dart';
 
 class MyPage extends StatefulWidget {
+  const MyPage({Key? key}) : super(key: key);
+
   @override
-  MyState createState() => new MyState();
+  MyState createState() => MyState();
 }
 
 class MyState extends State<MyPage> {
@@ -28,22 +30,23 @@ class MyState extends State<MyPage> {
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new Scaffold(
+    return MaterialApp(
+      home: Scaffold(
         // appBar: new AppBar(
         //   title: new Text("我的"),
-        //   backgroundColor: Color.fromARGB(255, 119, 136, 213), //设置appbar背景颜色
+        //   backgroundColor: const Color.fromARGB(255, 119, 136, 213), //设置appbar背景颜色
         //   centerTitle: true, //设置标题是否局中
         // ),
         body: Container(
           height: double.infinity,
           width: double.infinity,
-          child: CustomScrollView(
-            anchor: 0,
-            scrollDirection: Axis.vertical,
-            reverse: false,
-            slivers: [new SliverComp(),_buildSliderList()],
-          ),
+          // child: CustomScrollView(
+          //   anchor: 0,
+          //   scrollDirection: Axis.vertical,
+          //   reverse: false,
+          //   slivers: [const SliverComp(),_buildSliderList()],
+          // ),
+          child:const Text("我的"),
         ),
       ),
     );

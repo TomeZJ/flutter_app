@@ -10,8 +10,10 @@ import 'package:flutter_app/Kb.dart';
 
 //主界面
 class Guohe extends StatefulWidget {
+  const Guohe({Key? key}) : super(key: key);
+
   @override
-  GuoheState createState() => new GuoheState();
+  GuoheState createState() => GuoheState();
 }
 
 class GuoheState extends State<Guohe> with SingleTickerProviderStateMixin{

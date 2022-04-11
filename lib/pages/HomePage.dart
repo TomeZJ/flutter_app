@@ -86,8 +86,8 @@ class HomeState extends State<HomePage> {
   void _jumpToPage(BuildContext context,String title) {
     print(title);
     if( title == _titles[0]){
-      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => DetailPage()));
-      return;
+      // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const DetailPage()));
+      Navigator.of(context).push(MaterialPageRoute(builder: (_) { return const DetailPage();}));
     }
   }
 

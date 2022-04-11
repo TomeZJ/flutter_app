@@ -10,7 +10,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginState extends State<LoginPage> {
-   // 账号控制器
+  // 账号控制器
   TextEditingController accountController = TextEditingController();
   // 密码控制器
   TextEditingController passController = TextEditingController();
@@ -99,7 +99,7 @@ class LoginState extends State<LoginPage> {
                 onPressed: _submitLogin,
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(const Color(0xffEDFCF5)),
-                  foregroundColor: MaterialStateProperty.all(const Color(0xff31C27C)),                //字体
+                  foregroundColor: MaterialStateProperty.all(const Color(0xff31C27C)), // 字体
                 ),
                 child: const Text('登录'),
               ),
@@ -122,9 +122,6 @@ class LoginState extends State<LoginPage> {
         title:Text("密码格式不对")
       ));
     } else {
-      // showDialog(context: context, builder: (context) => const AlertDialog(
-      //   title:Text("登录成功")
-      // ));
       accountController.clear();
       passController.clear();
       Navigator.pushNamed(context, "/home"); //首页进来的登录
